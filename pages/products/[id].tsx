@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StarIcon } from '@heroicons/react/solid';
 import { RadioGroup } from '@headlessui/react';
 import { Cart } from '../../components/Cart';
-import { products } from './product';
+import { products } from '../../components/product';
 import Image from 'next/image'
 
 const product = {

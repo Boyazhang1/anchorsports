@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import {products} from './product'
+import {products} from '../../components/product'
 import Image from 'next/image'
 
 export default function Example() {

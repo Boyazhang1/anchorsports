@@ -4,42 +4,54 @@ const Footer = () => {
   return (
     <footer className="text-gray-600 body-font">
       <div className="container px-2 py-12 mx-auto">
-        <div className="flex-row flex-wrap md:text-left text-center order-first justify-center">
-          <div className="md:w-1/4 w-1/2 inline-block px-4">
+        <div className="flex-row flex-wrap md:text-left text-center order-first justify-center items-stretch">
+          <div className="md:w-1/4 w-1/2 inline-block px-4 h-full">
             <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
-              CATEGORIES
+              Location
             </h2>
             <nav className="list-none mb-10">
               <li>
-                <a className="text-gray-600 hover:text-gray-800">First Link</a>
+                <a className="text-gray-600 hover:text-gray-800">
+                  Anchor Sports Club
+                </a>
               </li>
               <li>
-                <a className="text-gray-600 hover:text-gray-800">Second Link</a>
+                <a className="text-gray-600 hover:text-gray-800">
+                  1469 Nottinghill Gate
+                </a>
               </li>
               <li>
-                <a className="text-gray-600 hover:text-gray-800">Third Link</a>
+                <a className="text-gray-600  hover:text-gray-800">
+                  Oakville, Ontario
+                </a>
               </li>
               <li>
-                <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
+                <a
+                  className="text-gray-600  font-bold hover:text-gray-800 hover:underline"
+                  href="https://www.google.com/maps/dir/?api=1&destination=1469+Nottinghill+Gate+OAKVILLE+ON+L6M+1X7"
+                  target="_blank"
+                >
+                  Get Directions
+                </a>
               </li>
             </nav>
           </div>
-          <div className="md:w-1/4 w-1/2 px-4 inline-block">
+          <div className="md:w-1/4 w-1/2 px-4 inline-block h-full">
             <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
-              CATEGORIES
+              Hours
             </h2>
             <nav className="list-none mb-10">
               <li>
-                <a className="text-gray-600 hover:text-gray-800">First Link</a>
+                <a className="text-gray-600 hover:text-gray-800">Weekdays:</a>
               </li>
               <li>
-                <a className="text-gray-600 hover:text-gray-800">Second Link</a>
+                <a className="text-gray-600 hover:text-gray-800">9:00 a.m - 5:00 p.m</a>
               </li>
               <li>
-                <a className="text-gray-600 hover:text-gray-800">Third Link</a>
+                <a className="text-gray-600 hover:text-gray-800">Weekends:</a>
               </li>
               <li>
-                <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
+                <a className="text-gray-600 hover:text-gray-800">closed</a>
               </li>
             </nav>
           </div>

@@ -77,7 +77,7 @@ const Navbar = () => {
                     }}
                   >
                     <li className="mx-4  my-2">
-                      <Link href="/product">
+                      <Link href="/products">
                         <a className="hover:underline">Our Product</a>
                       </Link>
                     </li>

@@ -30,6 +30,7 @@ const Footer = () => {
                   className="text-gray-600  font-bold hover:text-gray-800 hover:underline"
                   href="https://www.google.com/maps/dir/?api=1&destination=1469+Nottinghill+Gate+OAKVILLE+ON+L6M+1X7"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   Get Directions
                 </a>
@@ -45,7 +46,9 @@ const Footer = () => {
                 <a className="text-gray-600 hover:text-gray-800">Weekdays:</a>
               </li>
               <li>
-                <a className="text-gray-600 hover:text-gray-800">9:00 a.m - 5:00 p.m</a>
+                <a className="text-gray-600 hover:text-gray-800">
+                  9:00 a.m - 5:00 p.m
+                </a>
               </li>
               <li>
                 <a className="text-gray-600 hover:text-gray-800">Weekends:</a>

@@ -120,6 +120,7 @@ const Id = () => {
               src={product.images[0].src}
               alt={product.images[0].alt}
               className="w-full h-full object-center object-cover"
+              layout='fill'
             />
           </div>
           <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
@@ -128,6 +129,7 @@ const Id = () => {
                 src={product.images[1].src}
                 alt={product.images[1].alt}
                 className="w-full h-full object-center object-cover"
+                layout='fill'
               />
             </div>
             <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
@@ -135,6 +137,7 @@ const Id = () => {
                 src={product.images[2].src}
                 alt={product.images[2].alt}
                 className="w-full h-full object-center object-cover"
+                layout='fill'
               />
             </div>
           </div>
@@ -143,6 +146,7 @@ const Id = () => {
               src={product.images[3].src}
               alt={product.images[3].alt}
               className="w-full h-full object-center object-cover"
+              layout='fill'
             />
           </div>
         </div>

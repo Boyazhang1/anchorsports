@@ -1,13 +1,20 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { XIcon } from '@heroicons/react/outline'
-import Image from 'next/image'
+import { Fragment, useState } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import { XIcon } from '@heroicons/react/outline';
+import Image from 'next/image';
 
 interface Props {
-    open: boolean;
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    products: { id: number; name: string; href: string; price: string; imageSrc: string; imageAlt: string; }[]
-  }
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  products: {
+    id: number;
+    name: string;
+    href: string;
+    price: string;
+    imageSrc: string;
+    imageAlt: string;
+  }[];
+}
 
 const products = [
   {
@@ -17,8 +24,10 @@ const products = [
     color: 'Salmon',
     price: '$90.00',
     quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-    imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
+    imageSrc:
+      'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
+    imageAlt:
+      'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
   },
   {
     id: 2,
@@ -27,18 +36,21 @@ const products = [
     color: 'Blue',
     price: '$32.00',
     quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
+    imageSrc:
+      'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
     imageAlt:
       'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
   },
   // More products...
-]
-const Cart = ({open, setOpen, products}: Props) => {
-
-
+];
+const Cart = ({ open, setOpen, products }: Props) => {
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="fixed inset-0 overflow-hidden" onClose={() =>setOpen(false)}>
+      <Dialog
+        as="div"
+        className="fixed inset-0 overflow-hidden"
+        onClose={() => setOpen(false)}
+      >
         <div className="absolute inset-0 overflow-hidden">
           <Transition.Child
             as={Fragment}
@@ -66,7 +78,9 @@ const Cart = ({open, setOpen, products}: Props) => {
                 <div className="h-full flex flex-col bg-white shadow-xl overflow-y-scroll">
                   <div className="flex-1 py-6 overflow-y-auto px-4 sm:px-6">
                     <div className="flex items-start justify-between">
-                      <Dialog.Title className="text-lg font-medium text-gray-900">Shopping cart</Dialog.Title>
+                      <Dialog.Title className="text-lg font-medium text-gray-900">
+                        Shopping cart
+                      </Dialog.Title>
                       <div className="ml-3 h-7 flex items-center">
                         <button
                           type="button"
@@ -81,14 +95,19 @@ const Cart = ({open, setOpen, products}: Props) => {
 
                     <div className="mt-8">
                       <div className="flow-root">
-                        <ul role="list" className="-my-6 divide-y divide-gray-200">
+                        <ul
+                          role="list"
+                          className="-my-6 divide-y divide-gray-200"
+                        >
                           {products.map((product) => (
                             <li key={product.id} className="py-6 flex">
-                              <div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
+                              {/* NoteToSelf: position of parent must be relative for layout='fill' to work */}
+                              <div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden relative"> 
                                 <Image
                                   src={product.imageSrc}
                                   alt={product.imageAlt}
                                   className="w-full h-full object-center object-cover"
+                                  layout='fill'
                                 />
                               </div>
 
@@ -100,12 +119,17 @@ const Cart = ({open, setOpen, products}: Props) => {
                                     </h3>
                                     <p className="ml-4">{product.price}</p>
                                   </div>
-                                  <p className="mt-1 text-sm text-gray-500">test</p>
+                                  <p className="mt-1 text-sm text-gray-500">
+                                    test
+                                  </p>
                                 </div>
                                 <div className="flex-1 flex items-end justify-between text-sm">
                                   {/* <p className="text-gray-500">Qty {product.quantity}</p> */}
                                   <div className="flex">
-                                    <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
+                                    <button
+                                      type="button"
+                                      className="font-medium text-indigo-600 hover:text-indigo-500"
+                                    >
                                       Remove
                                     </button>
                                   </div>
@@ -123,7 +147,9 @@ const Cart = ({open, setOpen, products}: Props) => {
                       <p>Subtotal</p>
                       <p>$262.00</p>
                     </div>
-                    <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+                    <p className="mt-0.5 text-sm text-gray-500">
+                      Shipping and taxes calculated at checkout.
+                    </p>
                     <div className="mt-6">
                       <a
                         href="#"
@@ -140,7 +166,8 @@ const Cart = ({open, setOpen, products}: Props) => {
                           className="text-indigo-600 font-medium hover:text-indigo-500"
                           onClick={() => setOpen(false)}
                         >
-                          Continue Shopping<span aria-hidden="true"> &rarr;</span>
+                          Continue Shopping
+                          <span aria-hidden="true"> &rarr;</span>
                         </button>
                       </p>
                     </div>
@@ -152,6 +179,6 @@ const Cart = ({open, setOpen, products}: Props) => {
         </div>
       </Dialog>
     </Transition.Root>
-  )
-}
-export {Cart}; 
+  );
+};
+export { Cart };

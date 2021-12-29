@@ -17,6 +17,7 @@ export default function Example() {
                     src={product.imageSrc}
                     alt={product.imageAlt}
                     className="w-full h-full object-center object-cover group-hover:opacity-75"
+                    layout='fill'
                   />
                 </div>
                 <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>

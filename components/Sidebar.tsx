@@ -16,8 +16,8 @@ export default function Sidebar({ open, setOpen }: Props) {
   sideNavs.set('Programs + registration', '/programs');
   sideNavs.set('About Us', '/about');
   sideNavs.set('Contact us', '/contact');
-  sideNavs.set('Our Product', '/product');
-  sideNavs.set('Tournament', 'tournament');
+  sideNavs.set('Our Product', '/products');
+  sideNavs.set('Tournament', '/tournament');
   sideNavs.set('2021 Club General Meeting', 'legal');
 
   const displaySideNav = (sideNavs: Map<string, string>) => {
@@ -28,13 +28,14 @@ export default function Sidebar({ open, setOpen }: Props) {
       index: number,
       link: string
     ): void {
+      setOpen(false); 
       e.preventDefault();
-      if (index == 0) {
-        setOpen(false);
-      } else {
+      if (index != 0) {
         router.push(link);
       }
     }
+    console.log(open)
+
     return sideNavsArr.map((element, index) => {
       return (
         <li className="p-6 border-b-2 border-slate-700 hover:bg-slate-100" key={index}>
@@ -43,9 +44,9 @@ export default function Sidebar({ open, setOpen }: Props) {
               {...(index == 0
                 ? {
                     className: 'hover:underline',
-                    onClick: (e) => handleClick(e, index, element[1]),
                   }
                 : { className: 'hover:underline' })}
+              onClick={(e) => handleClick(e, index, element[1])}
             >
               {element[0]}
             </a>

@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/image';
 
 const Programs = () => {
   return (
@@ -14,17 +14,19 @@ const Programs = () => {
           <p className="lg:w-1/2 w-full leading-relaxed text-gray-500">
             Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
             gentrify, subway tile poke farm-to-table. Franzen you probably
-            haven&apos;t heard of them man bun deep jianbing selfies heirloom prism
-            food truck ugh squid celiac humblebrag.
+            haven&apos;t heard of them man bun deep jianbing selfies heirloom
+            prism food truck ugh squid celiac humblebrag.
           </p>
         </div>
         <div className="flex flex-wrap -m-4">
           <div className="xl:w-1/4 md:w-1/2 p-4">
-            <div className="bg-gray-100 p-6 rounded-lg">
+            <div className="bg-gray-100 p-6 rounded-lg relative">
               <Image
                 className="h-40 rounded w-full object-cover object-center mb-6"
                 src="https://dummyimage.com/720x400"
                 alt="content"
+                height={403}
+                width={703}
               />
               <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">
                 SUBTITLE
@@ -39,11 +41,13 @@ const Programs = () => {
             </div>
           </div>
           <div className="xl:w-1/4 md:w-1/2 p-4">
-            <div className="bg-gray-100 p-6 rounded-lg">
+            <div className="bg-gray-100 p-6 rounded-lg relative">
               <Image
                 className="h-40 rounded w-full object-cover object-center mb-6"
                 src="https://dummyimage.com/721x401"
                 alt="content"
+                height={403}
+                width={703}
               />
               <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">
                 SUBTITLE
@@ -58,11 +62,13 @@ const Programs = () => {
             </div>
           </div>
           <div className="xl:w-1/4 md:w-1/2 p-4">
-            <div className="bg-gray-100 p-6 rounded-lg">
+            <div className="bg-gray-100 p-6 rounded-lg relative">
               <Image
                 className="h-40 rounded w-full object-cover object-center mb-6"
                 src="https://dummyimage.com/722x402"
                 alt="content"
+                height={403}
+                width={703}
               />
               <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">
                 SUBTITLE
@@ -82,6 +88,8 @@ const Programs = () => {
                 className="h-40 rounded w-full object-cover object-center mb-6"
                 src="https://dummyimage.com/723x403"
                 alt="content"
+                height={403}
+                width={703}
               />
               <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">
                 SUBTITLE

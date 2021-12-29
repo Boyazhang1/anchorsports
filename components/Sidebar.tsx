@@ -28,24 +28,27 @@ export default function Sidebar({ open, setOpen }: Props) {
       index: number,
       link: string
     ): void {
-      setOpen(false); 
+      setOpen(false);
       e.preventDefault();
-      if (index != 0) {
-        router.push(link);
-      }
+      router.push(link);
     }
-    console.log(open)
+    console.log(open);
 
     return sideNavsArr.map((element, index) => {
       return (
-        <li className="p-6 border-b-2 border-slate-700 hover:bg-slate-100" key={index}>
+        <li
+          className="p-6 border-b-2 border-slate-700 hover:bg-slate-100"
+          key={index}
+        >
           <Link href={element[1]}>
             <a
-              {...(index == 0
-                ? {
-                    className: 'hover:underline',
-                  }
-                : { className: 'hover:underline' })}
+// noteToSelf: useful condition classNames method
+//               {...(index == 0
+//                 ? {
+// ,
+//                   }
+//                 : { className: 'hover:underline' })}
+              className='hover:underline'
               onClick={(e) => handleClick(e, index, element[1])}
             >
               {element[0]}

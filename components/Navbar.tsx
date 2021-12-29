@@ -12,7 +12,6 @@ const Navbar = () => {
 
   const handleClick = () => {
     setOpen(true);
-    console.log('clicked button');
   };
 
   return (

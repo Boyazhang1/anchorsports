@@ -6,7 +6,7 @@ import {useRouter} from 'next/router';
 const Hero = () => {
   const router = useRouter();
 
-  const handleClick = (e) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>):void => {
     e.preventDefault()
     router.push('/programs')
   }

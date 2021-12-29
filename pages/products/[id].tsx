@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { StarIcon } from '@heroicons/react/solid';
 import { RadioGroup } from '@headlessui/react';
 import { Cart } from '../../components/Cart';
@@ -58,7 +58,7 @@ const product = {
 };
 const reviews = { href: '#', average: 4, totalCount: 117 };
 
-function classNames(...classes) {
+function classNames(...classes:any[]):any {
   return classes.filter(Boolean).join(' ');
 }
 
@@ -67,9 +67,7 @@ const id = () => {
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
   const [open, setOpen] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+
 
   return (
     <div className="bg-white">

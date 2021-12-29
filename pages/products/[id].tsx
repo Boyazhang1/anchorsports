@@ -116,7 +116,7 @@ const Id = () => {
         {/* Image gallery */}
         <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
           <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
-            <img
+            <Image
               src={product.images[0].src}
               alt={product.images[0].alt}
               className="w-full h-full object-center object-cover"

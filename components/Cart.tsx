@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
+import Image from 'next/image'
 
 interface Props {
     open: boolean;
@@ -84,7 +85,7 @@ const Cart = ({open, setOpen, products}: Props) => {
                           {products.map((product) => (
                             <li key={product.id} className="py-6 flex">
                               <div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
-                                <img
+                                <Image
                                   src={product.imageSrc}
                                   alt={product.imageAlt}
                                   className="w-full h-full object-center object-cover"

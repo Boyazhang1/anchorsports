@@ -2,6 +2,8 @@ import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { XIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
+import axios from 'axios';
+import { loadStripe } from '@stripe/stripe-js';
 
 interface Props {
   open: boolean;
@@ -16,6 +18,15 @@ interface Props {
   }[];
 }
 
+const testItems = [
+  {
+    title: 'Basketball Camp Youth',
+    description: 'Mondays at 5:30pm for youth aged 13 -18',
+    image:
+      'https://images.unsplash.com/photo-1519861531473-9200262188bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmFza2V0YmFsbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+    price: 250,
+  },
+];
 const products = [
   {
     id: 1,
@@ -44,6 +55,26 @@ const products = [
   // More products...
 ];
 const Cart = ({ open, setOpen, products }: Props) => {
+  console.log(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+  const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+
+  const createCheckoutSession = async () => {
+    const stripe = await stripePromise;
+    console.log('checkingn out');
+    const checkOutSession = await axios.post('/api/create-checkout-session', {
+      items: testItems,
+      email: 'test@gmail.com',
+    });
+
+    const result = await stripe.redirectToCheckout({
+      sessionId: checkOutSession.data.id,
+    });
+
+    if (result.error) {
+      alert(result.error.message);
+    }
+  };
+
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -102,12 +133,12 @@ const Cart = ({ open, setOpen, products }: Props) => {
                           {products.map((product) => (
                             <li key={product.id} className="py-6 flex">
                               {/* NoteToSelf: position of parent must be relative for layout='fill' to work */}
-                              <div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden relative"> 
+                              <div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden relative">
                                 <Image
                                   src={product.imageSrc}
                                   alt={product.imageAlt}
                                   className="w-full h-full object-center object-cover"
-                                  layout='fill'
+                                  layout="fill"
                                 />
                               </div>
 
@@ -154,8 +185,9 @@ const Cart = ({ open, setOpen, products }: Props) => {
                       <a
                         href="#"
                         className="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                        onClick={createCheckoutSession}
                       >
-                        Checkout
+                        Hi
                       </a>
                     </div>
                     <div className="mt-6 flex justify-center text-sm text-center text-gray-500">

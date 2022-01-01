@@ -37,7 +37,7 @@ export default function Sidebar({ open, setOpen }: Props) {
     return sideNavsArr.map((element, index) => {
       return (
         <li
-          className="p-6 border-b-2 border-slate-700 hover:bg-slate-100"
+          className="p-6 border border-slate-700 hover:bg-slate-100"
           key={index}
         >
           <Link href={element[1]}>

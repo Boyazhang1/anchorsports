@@ -1,7 +1,14 @@
-export default function Example() {
-    return (
-      <>
-        <div>
+import { Form } from '../components/Form';
+import clientPromise from '../utils/mongodb';
+
+interface Props {
+  isConnected: Boolean;
+}
+export default function Example({ people }) {
+  console.log(people);
+  return (
+    <>
+      <div>
         <div className="mt-10 sm:mt-0">
           <div className="md:grid md:grid-cols-3 md:gap-6">
             <div className="mt-5 md:mt-0 md:col-span-2">
@@ -10,7 +17,10 @@ export default function Example() {
                   <div className="px-4 py-5 bg-white sm:p-6">
                     <div className="grid grid-cols-6 gap-6">
                       <div className="col-span-6 sm:col-span-3">
-                        <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">
+                        <label
+                          htmlFor="first-name"
+                          className="block text-sm font-medium text-gray-700"
+                        >
                           First name
                         </label>
                         <input
@@ -21,9 +31,12 @@ export default function Example() {
                           className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                       </div>
-  
+
                       <div className="col-span-6 sm:col-span-3">
-                        <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">
+                        <label
+                          htmlFor="last-name"
+                          className="block text-sm font-medium text-gray-700"
+                        >
                           Last name
                         </label>
                         <input
@@ -34,9 +47,12 @@ export default function Example() {
                           className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                       </div>
-  
+
                       <div className="col-span-6 sm:col-span-4">
-                        <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
+                        <label
+                          htmlFor="email-address"
+                          className="block text-sm font-medium text-gray-700"
+                        >
                           Email address
                         </label>
                         <input
@@ -47,9 +63,12 @@ export default function Example() {
                           className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                       </div>
-  
+
                       <div className="col-span-6 sm:col-span-3">
-                        <label htmlFor="country" className="block text-sm font-medium text-gray-700">
+                        <label
+                          htmlFor="country"
+                          className="block text-sm font-medium text-gray-700"
+                        >
                           Country
                         </label>
                         <select
@@ -63,9 +82,12 @@ export default function Example() {
                           <option>Mexico</option>
                         </select>
                       </div>
-  
+
                       <div className="col-span-6">
-                        <label htmlFor="street-address" className="block text-sm font-medium text-gray-700">
+                        <label
+                          htmlFor="street-address"
+                          className="block text-sm font-medium text-gray-700"
+                        >
                           Street address
                         </label>
                         <input
@@ -76,9 +98,12 @@ export default function Example() {
                           className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                       </div>
-  
+
                       <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                        <label htmlFor="city" className="block text-sm font-medium text-gray-700">
+                        <label
+                          htmlFor="city"
+                          className="block text-sm font-medium text-gray-700"
+                        >
                           City
                         </label>
                         <input
@@ -89,9 +114,12 @@ export default function Example() {
                           className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                       </div>
-  
+
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                        <label htmlFor="region" className="block text-sm font-medium text-gray-700">
+                        <label
+                          htmlFor="region"
+                          className="block text-sm font-medium text-gray-700"
+                        >
                           State / Province
                         </label>
                         <input
@@ -102,9 +130,12 @@ export default function Example() {
                           className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                       </div>
-  
+
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                        <label htmlFor="postal-code" className="block text-sm font-medium text-gray-700">
+                        <label
+                          htmlFor="postal-code"
+                          className="block text-sm font-medium text-gray-700"
+                        >
                           ZIP / Postal code
                         </label>
                         <input
@@ -130,15 +161,41 @@ export default function Example() {
             </div>
           </div>
         </div>
-  
+
         <div className="hidden sm:block" aria-hidden="true">
           <div className="py-5">
-            <div className="border-t border-gray-200" />
+            {people.map((person) => (
+              <p>{person.username}</p>
+            ))}
           </div>
+          <Form/>
         </div>
-  
-        
-        </div>
-      </>
-    )
-  }
+      </div>
+    </>
+  );
+}
+
+export async function getServerSideProps(context: any) {
+  const client = await clientPromise;
+  const db = client.db('sample_analytics');
+
+  const data = await db.collection('customers').find({'birthdate': {$gt: new Date(1990, 0, 1)}}).limit(20).toArray();
+
+  const people = JSON.parse(JSON.stringify(data));
+
+  return {
+    props: { people },
+  };
+
+  // try {
+  //   await clientPromise;
+  //   return {
+  //     props: { isConnected: true },
+  //   };
+  // } catch (e) {
+  //   console.error(e);
+  //   return {
+  //     props: { isConnected: false },
+  //   };
+  // }
+}

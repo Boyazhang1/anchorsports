@@ -5,7 +5,6 @@ interface Props {
   isConnected: Boolean;
 }
 export default function Example({ people }) {
-  console.log(people);
   return (
     <>
       <div>
@@ -168,7 +167,7 @@ export default function Example({ people }) {
               <p>{person.username}</p>
             ))}
           </div>
-          <Form/>
+          <Form />
         </div>
       </div>
     </>
@@ -179,7 +178,11 @@ export async function getServerSideProps(context: any) {
   const client = await clientPromise;
   const db = client.db('sample_analytics');
 
-  const data = await db.collection('customers').find({'birthdate': {$gt: new Date(1990, 0, 1)}}).limit(20).toArray();
+  const data = await db
+    .collection('customers')
+    .find({ birthdate: { $gt: new Date(1990, 0, 1) } })
+    .limit(20)
+    .toArray();
 
   const people = JSON.parse(JSON.stringify(data));
 

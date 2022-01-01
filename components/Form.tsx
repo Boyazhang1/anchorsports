@@ -1,23 +1,29 @@
+import { sampleStudent } from './samplestudent';
+import axios from 'axios';
+
 const Form = () => {
-  const registerUser = async (event) => {
-    event.preventDefault();
+  const registerStudent = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-    const res = await fetch('/api/register', {
-      body: JSON.stringify({
-        name: event.target.name.value,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-    });
+    axios
+      .post('/api/register', sampleStudent)
+      .then((res) => console.log(res.data))
+      .catch((e) => console.log(e));
 
-    const result = await res.json();
+    // const res = await fetch('/api/register', {
+    //   body: JSON.stringify({
+    //     name: e.target.name.value,
+    //   }),
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   method: 'POST',
+    // });
     // result.user => 'Ada Lovelace'
   };
 
   return (
-    <form onSubmit={registerUser}>
+    <form onSubmit={registerStudent}>
       <label htmlFor="name">Name</label>
       <input id="name" name="name" type="text" autoComplete="name" required />
       <button type="submit">Register</button>

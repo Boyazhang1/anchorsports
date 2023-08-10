@@ -11,7 +11,7 @@ Ultimately, the owners would like to extend the website into a student managemen
 
 
 ### Solution
-I decided to help tackle these challenges through a custom web-based application. This repo contains the mobile responsive website redesign for Anchor Sports Club built with Next.js, Typescript and TailwindCSS. The backend is hosted a seperate repo, and cannot be made public due to sensitive business logic.  
+I decided to help tackle these challenges through a custom web-based application. This repo contains the mobile responsive website redesign for Anchor Sports Club built with **Next.js**, **Typescript** and **TailwindCSS**. The backend is hosted a seperate repo, and cannot be made public due to sensitive business logic.  
 
 Currently building (frontend)
  - Reusable Typescript + React component

@@ -18,7 +18,7 @@ Currently building (frontend)
  - The signup/login flow for parents
 
 
-
-
+![Screen Shot 2023-08-10 at 4 53 30 PM](https://github.com/Boyazhang1/anchorsports/assets/82241706/dcd1b571-6220-43ea-80c4-afeb58a91716)
+![Screen Shot 2023-08-10 at 4 53 16 PM](https://github.com/Boyazhang1/anchorsports/assets/82241706/e462610d-cadb-47d6-be79-f6a687d2b3c4)
 
 
